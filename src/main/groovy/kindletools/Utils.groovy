@@ -30,23 +30,25 @@ class Utils {
     static String deleteSdr() {
         def result = "Delete sdr: \n"
         def root = new File(Common.path)
+        def hash = new HashSet()
+        def count = 0
+
+        root.eachFile { file ->
+            if (file.isFile() && file.name.contains(".")) {
+                hash.add(file.name.substring(0, file.name.lastIndexOf(".")))
+            }
+        }
 
         root.eachDir { dir ->
             if (dir.name.endsWith(".sdr")) {
                 def target = dir.name - ".sdr"
-                def flag = false
-                root.eachFile { file ->
-                    if (file.isFile() && file.name.contains(target)) {
-                        flag = true
-                        return result
-                    }
-                }
-                if (!flag && dir.deleteDir()) {
+                if (!hash.contains(target) && dir.deleteDir()) {
                     result += "\n" + dir.name
+                    count++
                 }
             }
         }
 
-        result
+        result += "\n\nCount: " + count
     }
 }

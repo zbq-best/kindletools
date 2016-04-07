@@ -3,6 +3,7 @@ package kindletools
 import kindletools.view.MainFrame
 
 import javax.swing.*
+
 /**
  * Created by 白 on 2016/4/7.
  */

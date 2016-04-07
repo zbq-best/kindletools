@@ -1,27 +1,15 @@
-package utils
+package kindletools
+
 /**
  * Created by 白 on 2016/4/7.
  */
 class Utils {
-    static def root = new File(".")
-
     static String generateDirectory(def isGenerateTXT) {
 
         def result = "Directory:\n"
+        def root = new File(Common.path)
+        def count = 0
 
-        root.eachDir { dir ->
-            if (dir.name.contains("documents")) {
-                root = dir
-                return result
-            }
-        }
-
-        if (!root.name.contains("documents")) {
-            result +=  "\nCount: 0"
-            return result
-        }
-
-        def count = 0;
         root.eachFile { file ->
 
             if (file.isFile()) {
@@ -41,17 +29,7 @@ class Utils {
 
     static String deleteSdr() {
         def result = "Delete sdr: \n"
-
-        root.eachDir { dir ->
-            if (dir.name.contains("documents")) {
-                root = dir
-                return result
-            }
-        }
-
-        if (!root.name.contains("documents")) {
-            return result
-        }
+        def root = new File(Common.path)
 
         root.eachDir { dir ->
             if (dir.name.endsWith(".sdr")) {

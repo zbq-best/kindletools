@@ -6,7 +6,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 sourceCompatibility = 1.5
-mainClassName='Main'
+mainClassName='kindletools.Main'
 
 repositories {
     mavenCentral()

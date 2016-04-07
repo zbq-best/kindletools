@@ -1,6 +1,6 @@
-package view
+package kindletools.view
 import javax.swing.*
-import java.awt.BorderLayout
+import java.awt.*
 
 /**
  * Created by 白 on 2016/4/7.
